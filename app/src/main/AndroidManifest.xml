@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.vasyl.prostir">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.CountryPicker">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.SelectAuthType" />
+        <activity android:name=".ui.AcceptBySms" />
+        <activity android:name=".ui.AccountsList" />
+        <activity android:name=".ui.DevicesList" />
+        <activity android:name=".ui.EnterCodeManually" />
+        <activity android:name=".ui.DecryptedMessage" />
+        <activity android:name=".ui.QrCodeScanner" />
+        <activity android:name=".ui.AccountAdd" />
+        <activity android:name=".ui.Authorization" />
+        <activity android:name=".ui.AuthByPin" />
+        <activity android:name=".ui.AcceptByCall" />
+    </application>
+
+</manifest>
