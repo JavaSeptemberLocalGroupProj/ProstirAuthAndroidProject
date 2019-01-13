@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import com.example.vasyl.prostir.ui.AcceptBySms;
 
 public class SMSReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (AcceptBySms.isAcceptBySmsActive) {

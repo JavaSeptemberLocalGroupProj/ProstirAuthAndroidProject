@@ -11,9 +11,10 @@ import com.example.vasyl.prostir.R;
 import com.example.vasyl.prostir.data.ServiceReference;
 
 public class DecryptedMessage extends AppCompatActivity {
-    String codeTemp = "BLPONB - 789"; // Code from server
-    TextView passwordTextView;
-    EditText description_EditText;
+
+    private String codeTemp = ServiceReference.getCodeForAccount();
+    private TextView passwordTextView;
+    private EditText description_EditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

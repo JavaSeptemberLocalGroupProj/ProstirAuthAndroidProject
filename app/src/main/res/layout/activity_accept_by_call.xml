@@ -30,10 +30,12 @@
         android:layout_alignStart="@+id/callAgainTextView"
         android:layout_alignParentTop="true"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="112dp"
+        android:layout_marginBottom="168dp"
         android:text="@string/calling"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/callAgainTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneImageView" />
@@ -45,39 +47,49 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="88dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/phone_image"
+        app:layout_constraintBottom_toTopOf="@+id/CallingTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/phone_image"
-        android:contentDescription="@string/phone_image" />
+        app:srcCompat="@drawable/phone_image" />
 
     <TextView
         android:id="@+id/dot1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="276dp"
         android:text="@string/dot_text"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CallingTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/dot2"
+        app:layout_constraintStart_toEndOf="@+id/CallingTextView"
+        app:layout_constraintTop_toBottomOf="@+id/phoneImageView" />
 
     <TextView
         android:id="@+id/dot2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="276dp"
         android:text="@string/dot_text"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dot1" />
+        app:layout_constraintEnd_toStartOf="@+id/dot3"
+        app:layout_constraintStart_toEndOf="@+id/dot1"
+        app:layout_constraintTop_toBottomOf="@+id/phoneImageView" />
 
     <TextView
         android:id="@+id/dot3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="112dp"
         android:layout_marginBottom="276dp"
         android:text="@string/dot_text"
@@ -86,7 +98,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/dot2" />
+        app:layout_constraintStart_toEndOf="@+id/dot2"
+        app:layout_constraintTop_toBottomOf="@+id/phoneImageView" />
 
 
 </android.support.constraint.ConstraintLayout>

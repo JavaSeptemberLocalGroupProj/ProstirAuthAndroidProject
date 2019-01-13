@@ -36,8 +36,8 @@ public class DeviceAdapter extends ArrayAdapter<Device> {
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
         iconView.setImageResource(currentDevice.getImageResourceId());
         return listItemView;
-    }
 
+    }
 }
 
 

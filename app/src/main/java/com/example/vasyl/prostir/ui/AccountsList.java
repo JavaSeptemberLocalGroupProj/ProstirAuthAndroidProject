@@ -24,6 +24,7 @@ public class AccountsList extends AppCompatActivity{
 
     private ListView listViewOfAccounts;
     private ArrayList<HashMap<String, String>> arrayListOfAccounts = ServiceReference.getArrayListOfAccounts();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,6 @@ public class AccountsList extends AppCompatActivity{
                 new String[]{"Name", "Token"},
                 new int[]{android.R.id.text1, android.R.id.text2});
         listViewOfAccounts.setAdapter(adapter);
-
 
         listViewOfAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener(){ // DELETE ACCOUNT
             @Override
@@ -56,7 +56,6 @@ public class AccountsList extends AppCompatActivity{
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
         switch (item.getItemId()){
             case R.id.addNewAccountMenuItem:
             {

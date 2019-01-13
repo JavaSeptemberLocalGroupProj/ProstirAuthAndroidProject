@@ -33,7 +33,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="112dp"
         android:layout_marginEnd="128dp"
-        android:onClick="onSendMsgAfainBtnClick"
+        android:onClick="onSendMsgAgainBtnClick"
         android:text="@string/send_message_again"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

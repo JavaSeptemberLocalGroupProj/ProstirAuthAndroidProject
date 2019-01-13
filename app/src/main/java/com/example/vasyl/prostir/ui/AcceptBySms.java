@@ -13,15 +13,19 @@ import com.goodiebag.pinview.Pinview;
 
 public class AcceptBySms extends AppCompatActivity {
 
-    private final static String PASSWORD = "0123";
-    private final static String PHONENUMBER = "6505551212"; // Change number !!!
+    private final static String PASSWORD = ServiceReference.getPassword();
+    private final static String PHONENUMBER = ServiceReference.getPhoneNumber();
+
+    private static TextView tw;
+    private static Pinview pw;
+
     public static boolean isAcceptBySmsActive = false;
-    static TextView tw;
-    static Pinview pw;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_by_sms);
+
         isAcceptBySmsActive = true;
         pw = findViewById(R.id.pinView);
         tw = findViewById(R.id.errorMsgTextView);
@@ -33,17 +37,19 @@ public class AcceptBySms extends AppCompatActivity {
         });
     }
 
-    public void onSendMsgAfainBtnClick(View view) {
+    public void onSendMsgAgainBtnClick(View view) {
         Toast.makeText(getApplicationContext(),
                 "Sending message...",
                 Toast.LENGTH_SHORT)
                 .show();
+        ServiceReference.sendSMSAgain();
     }
-    public  void isRightPassword (String enteredPassword){
+
+    public void isRightPassword (String enteredPassword){
         if (enteredPassword.equals(PASSWORD))  {
             Intent i = new Intent(this, AccountsList.class);
             isAcceptBySmsActive = false;
-            ServiceReference.addPrimaryToDeviceList();
+            ServiceReference.addCurrentToDeviceList();
             startActivity(i);
         }
         else {
@@ -53,6 +59,7 @@ public class AcceptBySms extends AppCompatActivity {
             pw.setInputType(Pinview.InputType.NUMBER);
         }
     }
+
     public static boolean isRightPhone (String PhoneNumber) {
         boolean result = false;
         if (PhoneNumber.equals(PHONENUMBER)) result = true;

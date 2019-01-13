@@ -14,18 +14,25 @@ import java.util.HashMap;
 
 public class ServiceReference {
 
-    private final String PASSWORD = "0123";
-    private final String PHONENUMBER = "6505551212";
 
-    private static String userPhoneNumber;
+    // This final variables must to be changed to non-final when server will work.
 
-    private static String Description_Temp;
+    private final static String PASSWORD = "0123"; // Password from server
+    private final static String PHONENUMBER = "6505551212"; // Phone from server
+    private final static String TOKEN = "25"; // Token from server
+    private final static String codeForAccount = "BLPONB - 789"; // Code for Account from Server
 
-    private static ArrayList<HashMap<String, String>> arrayListOfAccounts = new ArrayList<>();
-    private static ArrayList<Device> deviceList = new ArrayList<Device>();
+    private static String userPhoneNumber; // User phone number
+    private static String Description_Temp; // Temp variable for Description of Account
+    private static String userPasswordForApp = PASSWORD; // Password for enter to app (CHANGE)
+    private static boolean AllowMultipleDevices; // Allow mupltiple devices variablwe to server
 
-    public static void initDataBase() {
+    private static ArrayList<HashMap<String, String>> arrayListOfAccounts = new ArrayList<>(); // List of Accounts
+    private static ArrayList<Device> deviceList = new ArrayList<Device>(); // List of Devices
 
+    public static void initDataBase() { // First initialization of Data
+
+        // Accounts
         HashMap<String, String> map;
 
         map = new HashMap<>();
@@ -44,7 +51,7 @@ public class ServiceReference {
         arrayListOfAccounts.add(map);
 
 
-
+        // Devices
         deviceList.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
         deviceList.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
         deviceList.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
@@ -58,7 +65,7 @@ public class ServiceReference {
         deviceList.add(new Device("iPad", "02.03.17", R.mipmap.ic_launcher));
     }
 
-    public static void addPrimaryToDeviceList() {
+    public static void addCurrentToDeviceList() { // This method adds current Device to Device List
         BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
         String deviceName = Build.MANUFACTURER + " " + Build.MODEL;
 
@@ -75,12 +82,21 @@ public class ServiceReference {
         deviceList.add(new Device(deviceName, todayDate, R.mipmap.ic_launcher));
     }
 
+    public static void sendSMSAgain() {
+        // TODO
+    }
+
+    public static void makeCallAgain() {
+        // TODO
+    }
+
     public static ArrayList<HashMap<String, String>> getArrayListOfAccounts() {
 
         return arrayListOfAccounts;
     }
 
     public static void addItemToArrayListOfAccounts(String name, String token) {
+
         HashMap<String, String> map;
 
         map = new HashMap<>();
@@ -101,6 +117,56 @@ public class ServiceReference {
 
     public static void setDescription_Temp(String value) {
         Description_Temp = value;
+    }
+
+    public static String getUserPhoneNumber() {
+
+        return userPhoneNumber;
+    }
+
+    public static void setUserPhoneNumber(String value) {
+
+        userPhoneNumber = value;
+    }
+
+    public static String getPassword() {
+
+        return PASSWORD;
+    }
+
+    public static String getPhoneNumber() {
+
+        return PHONENUMBER;
+    }
+
+    public static String getToken() {
+
+        return TOKEN;
+    }
+
+    public static boolean isAllowMultipleDevices() {
+
+        return AllowMultipleDevices;
+    }
+
+    public static void setAllowMultipleDevices(boolean value) {
+
+
+        AllowMultipleDevices = value;
+    }
+
+    public static String getCodeForAccount() {
+
+        return codeForAccount;
+    }
+
+    public static String getUserPasswordForApp() {
+
+        return userPasswordForApp;
+    }
+
+    public static void setUserPasswordForApp() {
+        // TODO
     }
 
 }

@@ -20,22 +20,10 @@ public class DevicesList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_devices_list);
         ArrayList<Device> device = ServiceReference.getDeviceList();
-
-        /*device.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
-        device.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
-        device.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
-        device.add(new Device("iPad", "02.18.17", R.mipmap.ic_launcher));
-        device.add(new Device("iPad X", "08.09.17", R.mipmap.ic_launcher));
-        device.add(new Device("iPhone XR", "11.12.18", R.mipmap.ic_launcher));
-        device.add(new Device("iPhone XR", "11.12.18", R.mipmap.ic_launcher));
-        device.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
-        device.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
-        device.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
-        device.add(new Device("iPad", "02.18.17", R.mipmap.ic_launcher));*/
-
         DeviceAdapter deviceAdapter = new DeviceAdapter(this, device);
         ListView listView = (ListView) findViewById(R.id.listview_flavor);
         listView.setAdapter(deviceAdapter);
@@ -43,6 +31,10 @@ public class DevicesList extends AppCompatActivity {
         allowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                if (isChecked) {
+                    ServiceReference.setAllowMultipleDevices(true);
+                   // TODO
+               } else {
+                   ServiceReference.setAllowMultipleDevices(false);
                    // TODO
                }
             }

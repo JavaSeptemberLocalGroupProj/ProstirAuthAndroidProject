@@ -9,18 +9,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 
 public class SelectAuthType extends AppCompatActivity {
-    private String userPhoneNumber;
+
+    private String userPhoneNumber = ServiceReference.getUserPhoneNumber();
     private Button acceptByCallBtn;
     private Button acceptBySMSlBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_auth_type);
 
-        Bundle bundle = getIntent().getExtras();
-        userPhoneNumber = bundle.getString("USER_NUMBER");
         acceptByCallBtn = (Button) findViewById(R.id.acceptByCallBtn);
         acceptBySMSlBtn = (Button) findViewById(R.id.acceptBySMSlBtn);
 

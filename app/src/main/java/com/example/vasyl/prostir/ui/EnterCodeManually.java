@@ -12,11 +12,13 @@ import com.example.vasyl.prostir.R;
 import com.example.vasyl.prostir.data.ServiceReference;
 
 public class EnterCodeManually extends AppCompatActivity {
-    String TOKEN = "25";
-    Button okayBtn_ecm;
-    EditText enterSoftTokenEditText;
-    EditText description_EditText;
-    TextView errorSoftTokenTextView;
+
+    private String TOKEN = ServiceReference.getToken();
+    private Button okayBtn_ecm;
+    private EditText enterSoftTokenEditText;
+    private EditText description_EditText;
+    private TextView errorSoftTokenTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

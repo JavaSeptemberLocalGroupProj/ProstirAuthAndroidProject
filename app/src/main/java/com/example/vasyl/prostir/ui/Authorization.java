@@ -44,6 +44,7 @@ public class Authorization extends AppCompatActivity {
     private KeyStore keyStore;
     private Cipher cipher;
     private String KEY_NAME = "AndroidKey";
+    private TextView iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +72,16 @@ public class Authorization extends AppCompatActivity {
                 }
             }
         }
-        TextView iv = findViewById(R.id.paraLabel);
+        iv = findViewById(R.id.paraLabel);
         iv.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Intent intent = new Intent(Authorization.this, AccountsList.class);
-                startActivity(intent);
+                if (iv.getText().toString().equals("You can now access the app.")) {
+                    Intent intent = new Intent(Authorization.this, AccountsList.class);
+                    startActivity(intent);
+                }
             }
             @Override
             public void afterTextChanged(Editable editable) { }

@@ -16,31 +16,32 @@ import com.rilixtech.CountryCodePicker;
 
 public class CountryPicker extends AppCompatActivity {
 
-    CountryCodePicker CountryCodePicker;
-    TextView numberTextView;
-    EditText phoneNumer;
-    Button toNextPageBtn;
+    private CountryCodePicker CountryCodePicker;
+    private TextView numberTextView;
+    private EditText phoneNumber;
+    private Button toNextPageBtn;
 
-    String countryCode;
-    String userNumberPhone;
-    String userFullNumber;
+    private String countryCode;
+    private String userNumberPhone;
+    private String userFullNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country_picker);
         CountryCodePicker = (CountryCodePicker) findViewById(R.id.countryCodePicker);
+        // ADD FUNCTIONALITY TO GET USER PHONE NUMBER
         toNextPageBtn = (Button)findViewById(R.id.toNextPageBtn);
         numberTextView = findViewById(R.id.numberTextView);
-        phoneNumer = (EditText) findViewById(R.id.numberTextView);
+        phoneNumber = (EditText) findViewById(R.id.numberTextView);
         InputFilter[] FilterArray = new InputFilter[1];
         FilterArray[0] = new InputFilter.LengthFilter(14);
         /*phoneNumer.setFilters(FilterArray);
         phoneNumer.addTextChangedListener(new PhoneNumberFormattingTextWatcher());*/
-        ServiceReference.initDataBase();
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        ServiceReference.setUserPhoneNumber(phoneNumber.getText().toString());
         Intent myIntent = new Intent(getApplicationContext(), SelectAuthType.class);
         startActivityForResult(myIntent, 0);
         return true;
