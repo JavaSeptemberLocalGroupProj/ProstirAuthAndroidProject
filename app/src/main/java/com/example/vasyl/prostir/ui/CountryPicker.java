@@ -32,12 +32,11 @@ public class CountryPicker extends AppCompatActivity {
         CountryCodePicker = (CountryCodePicker) findViewById(R.id.countryCodePicker);
         toNextPageBtn = (Button)findViewById(R.id.toNextPageBtn);
         numberTextView = findViewById(R.id.numberTextView);
-
         phoneNumer = (EditText) findViewById(R.id.numberTextView);
         InputFilter[] FilterArray = new InputFilter[1];
         FilterArray[0] = new InputFilter.LengthFilter(14);
-        phoneNumer.setFilters(FilterArray);
-        phoneNumer.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        /*phoneNumer.setFilters(FilterArray);
+        phoneNumer.addTextChangedListener(new PhoneNumberFormattingTextWatcher());*/
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -49,8 +48,8 @@ public class CountryPicker extends AppCompatActivity {
     public void getNumber(){
         countryCode = CountryCodePicker.getSelectedCountryCodeWithPlus();
         userFullNumber = countryCode;
-        userNumberPhone = numberTextView.getText().toString();
-        userFullNumber = userFullNumber + userNumberPhone;
+        /*userNumberPhone = numberTextView.getText().toString();
+        userFullNumber = userFullNumber + userNumberPhone;*/
     }
 
     public void onGoNextBtnClick(View v){
