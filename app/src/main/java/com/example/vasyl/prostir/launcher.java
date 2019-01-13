@@ -1,8 +1,10 @@
 package com.example.vasyl.prostir;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 
 import com.example.vasyl.prostir.data.ServiceReference;
 import com.example.vasyl.prostir.ui.Authorization;
@@ -14,6 +16,8 @@ public class launcher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ServiceReference.initDataBase();
+        ServiceReference.setUserPhoneNumber(requireUserPhoneNumber());
+
         if (true) {
             Intent i = new Intent(this, CountryPicker.class);
             startActivity(i);
@@ -21,6 +25,15 @@ public class launcher extends AppCompatActivity {
             Intent i = new Intent(this, Authorization.class);
             startActivity(i);
         }
+    }
 
+
+    private String requireUserPhoneNumber() {
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        String userPhoneNumber = "";
+        try {
+            userPhoneNumber = telephonyManager.getLine1Number();
+        } catch (SecurityException e) {}
+        return userPhoneNumber;
     }
 }

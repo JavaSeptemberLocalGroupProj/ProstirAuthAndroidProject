@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+
+
+
 public class ServiceReference {
 
 
@@ -64,6 +67,7 @@ public class ServiceReference {
         deviceList.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
         deviceList.add(new Device("iPad", "02.03.17", R.mipmap.ic_launcher));
     }
+
 
     public static void addCurrentToDeviceList() { // This method adds current Device to Device List
         BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
