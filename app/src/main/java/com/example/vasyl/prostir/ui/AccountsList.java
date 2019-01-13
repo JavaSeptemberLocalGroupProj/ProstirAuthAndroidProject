@@ -2,7 +2,6 @@ package com.example.vasyl.prostir.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +14,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class AccountsList extends AppCompatActivity{
 
     private ListView listViewOfAccounts;
-    private ArrayList<HashMap<String, String>> arrayListOfAccounts;
+    private ArrayList<HashMap<String, String>> arrayListOfAccounts = ServiceReference.getArrayListOfAccounts();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,28 +32,9 @@ public class AccountsList extends AppCompatActivity{
         Toolbar toolbarMenu = (Toolbar) findViewById(R.id.toolbarMenu);
         listViewOfAccounts = (ListView) findViewById(R.id.listViewOfAccounts);
 
-        arrayListOfAccounts = new ArrayList<>();
-        HashMap<String, String> map;
-
-        map = new HashMap<>();
-        map.put("Name", "Instagram");
-        map.put("Tel", "495 501-3545");
-        arrayListOfAccounts.add(map);
-
-        map = new HashMap<>();
-        map.put("Name", "Telegram");
-        map.put("Tel", "495 241-6845");
-        arrayListOfAccounts.add(map);
-
-        map = new HashMap<>();
-        map.put("Name", "Facebook");
-        map.put("Tel", "495 431-5468");
-        arrayListOfAccounts.add(map);
-
-
         listViewOfAccounts.setEnabled(false);
         final SimpleAdapter adapter = new SimpleAdapter(this, arrayListOfAccounts, android.R.layout.simple_list_item_2,
-                new String[]{"Name", "Tel"},
+                new String[]{"Name", "Token"},
                 new int[]{android.R.id.text1, android.R.id.text2});
         listViewOfAccounts.setAdapter(adapter);
 

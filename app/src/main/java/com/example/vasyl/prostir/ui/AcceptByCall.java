@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 
 public class AcceptByCall extends AppCompatActivity {
 
@@ -72,6 +73,7 @@ public class AcceptByCall extends AppCompatActivity {
     private void goToNextPage() {
         Intent i = new Intent(this, AccountsList.class);
         isAcceptByCallActive = false;
+        ServiceReference.addPrimaryToDeviceList();
         startActivity(i);
     }
     public static void setEnterText() {

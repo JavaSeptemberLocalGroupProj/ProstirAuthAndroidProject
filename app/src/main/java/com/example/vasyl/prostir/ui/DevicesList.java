@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Switch;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 import com.example.vasyl.prostir.models.Device;
 import com.example.vasyl.prostir.utils.DeviceAdapter;
 
@@ -21,9 +22,9 @@ public class DevicesList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_devices_list);
-        ArrayList<Device> device = new ArrayList<Device>();
+        ArrayList<Device> device = ServiceReference.getDeviceList();
 
-        device.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
+        /*device.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
         device.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
         device.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
         device.add(new Device("iPad", "02.18.17", R.mipmap.ic_launcher));
@@ -33,7 +34,7 @@ public class DevicesList extends AppCompatActivity {
         device.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
         device.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
         device.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
-        device.add(new Device("iPad", "02.18.17", R.mipmap.ic_launcher));
+        device.add(new Device("iPad", "02.18.17", R.mipmap.ic_launcher));*/
 
         DeviceAdapter deviceAdapter = new DeviceAdapter(this, device);
         ListView listView = (ListView) findViewById(R.id.listview_flavor);

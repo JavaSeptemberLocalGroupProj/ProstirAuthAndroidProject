@@ -3,7 +3,6 @@ package com.example.vasyl.prostir.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 import com.rilixtech.CountryCodePicker;
 
 public class CountryPicker extends AppCompatActivity {
@@ -37,6 +37,7 @@ public class CountryPicker extends AppCompatActivity {
         FilterArray[0] = new InputFilter.LengthFilter(14);
         /*phoneNumer.setFilters(FilterArray);
         phoneNumer.addTextChangedListener(new PhoneNumberFormattingTextWatcher());*/
+        ServiceReference.initDataBase();
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

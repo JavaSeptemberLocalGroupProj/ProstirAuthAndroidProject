@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.data.ServiceReference;
 import com.goodiebag.pinview.Pinview;
 
 public class AcceptBySms extends AppCompatActivity {
@@ -42,6 +43,7 @@ public class AcceptBySms extends AppCompatActivity {
         if (enteredPassword.equals(PASSWORD))  {
             Intent i = new Intent(this, AccountsList.class);
             isAcceptBySmsActive = false;
+            ServiceReference.addPrimaryToDeviceList();
             startActivity(i);
         }
         else {
