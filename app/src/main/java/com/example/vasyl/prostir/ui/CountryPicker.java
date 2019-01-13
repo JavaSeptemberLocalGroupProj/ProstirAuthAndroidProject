@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,9 @@ public class CountryPicker extends AppCompatActivity {
         numberTextView = findViewById(R.id.numberTextView);
 
         phoneNumer = (EditText) findViewById(R.id.numberTextView);
+        InputFilter[] FilterArray = new InputFilter[1];
+        FilterArray[0] = new InputFilter.LengthFilter(14);
+        phoneNumer.setFilters(FilterArray);
         phoneNumer.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
 

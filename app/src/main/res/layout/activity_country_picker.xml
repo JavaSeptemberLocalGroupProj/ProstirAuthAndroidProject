@@ -39,7 +39,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/mask_for_number"
-        android:inputType="numberSigned"
+        android:inputType="phone"
         android:maxLength="8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
