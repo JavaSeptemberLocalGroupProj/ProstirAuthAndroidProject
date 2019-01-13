@@ -14,12 +14,14 @@ public class AcceptBySms extends AppCompatActivity {
 
     private final static String PASSWORD = "0123";
     private final static String PHONENUMBER = "6505551212"; // Change number !!!
+    public static boolean isAcceptBySmsActive = false;
     static TextView tw;
     static Pinview pw;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_by_sms);
+        isAcceptBySmsActive = true;
         pw = findViewById(R.id.pinView);
         tw = findViewById(R.id.errorMsgTextView);
         pw.setPinViewEventListener(new Pinview.PinViewEventListener() {
@@ -39,6 +41,7 @@ public class AcceptBySms extends AppCompatActivity {
     public  void isRightPassword (String enteredPassword){
         if (enteredPassword.equals(PASSWORD))  {
             Intent i = new Intent(this, AccountsList.class);
+            isAcceptBySmsActive = false;
             startActivity(i);
         }
         else {
