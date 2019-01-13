@@ -13,11 +13,10 @@ import com.goodiebag.pinview.Pinview;
 public class AcceptBySms extends AppCompatActivity {
 
     private final static String PASSWORD = "0123";
-    private final static String PHONENUMBER = "+380665210672";
+    private final static String PHONENUMBER = "6505551212"; // Change number !!!
     static TextView tw;
     static Pinview pw;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_by_sms);
@@ -39,7 +38,7 @@ public class AcceptBySms extends AppCompatActivity {
     }
     public  void isRightPassword (String enteredPassword){
         if (enteredPassword.equals(PASSWORD))  {
-            Intent i = new Intent(this,AccountsList.class);
+            Intent i = new Intent(this, AccountsList.class);
             startActivity(i);
         }
         else {

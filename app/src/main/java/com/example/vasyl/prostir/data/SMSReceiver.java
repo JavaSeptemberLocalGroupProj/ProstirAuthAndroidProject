@@ -13,8 +13,7 @@ public class SMSReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SmsMessage sm = Telephony.Sms.Intents.getMessagesFromIntent(intent)[0];
         String sp = sm.getOriginatingAddress();
-        // This if block adds phone checker
-        //if (MainActivity.isRightPhone(sp)) {
+        if (AcceptBySms.isRightPhone(sp)) { // This if block adds phone checker
             String message = sm.getMessageBody();
             String code = "";
             System.out.println(sp);
@@ -25,10 +24,8 @@ public class SMSReceiver extends BroadcastReceiver {
             }
             if (code.length() == 4)
             {
-                AcceptBySms s = new AcceptBySms();
-                s.isRightPassword(code);
                 AcceptBySms.setPw(code);
             }
-       // }
+       }
     }
 }
