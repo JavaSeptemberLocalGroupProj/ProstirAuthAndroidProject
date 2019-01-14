@@ -10,15 +10,17 @@ import com.example.vasyl.prostir.data.ServiceReference;
 import com.example.vasyl.prostir.ui.Authorization;
 import com.example.vasyl.prostir.ui.CountryPicker;
 
+
 public class launcher extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ServiceReference.initDataBase();
+
+        ServiceReference.connectToServer();
         ServiceReference.setUserPhoneNumber(requireUserPhoneNumber());
 
-        if (true) {
+        if (ServiceReference.isRegisteredDevice()) {
             Intent i = new Intent(this, CountryPicker.class);
             startActivity(i);
         } else {

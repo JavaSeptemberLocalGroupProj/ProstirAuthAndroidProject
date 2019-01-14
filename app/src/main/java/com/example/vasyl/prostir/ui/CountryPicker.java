@@ -56,6 +56,7 @@ public class CountryPicker extends AppCompatActivity {
 
     public void setNumberPhone() {
         // The next code can call Exceptions!
+
         countryCode = CountryCodePicker.getSelectedCountryCodeWithPlus();
         userFullNumber = countryCode;
         userNumberPhone = numberTextView.getText().toString();

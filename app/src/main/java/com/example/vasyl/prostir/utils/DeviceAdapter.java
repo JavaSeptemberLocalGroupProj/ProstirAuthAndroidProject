@@ -32,9 +32,9 @@ public class DeviceAdapter extends ArrayAdapter<Device> {
         TextView nameTextView = (TextView) listItemView.findViewById(R.id.version_name);
         nameTextView.setText(currentDevice.getDeviceName());
         TextView numberTextView = (TextView) listItemView.findViewById(R.id.version_number);
-        numberTextView.setText(currentDevice.getDeviceNumber());
+        numberTextView.setText(currentDevice.getLastUseDate());
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
-        iconView.setImageResource(currentDevice.getImageResourceId());
+        iconView.setImageResource(Device.getDeviceImage(currentDevice));
         return listItemView;
 
     }

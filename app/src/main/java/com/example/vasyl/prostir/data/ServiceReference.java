@@ -3,16 +3,21 @@ package com.example.vasyl.prostir.data;
 import android.bluetooth.BluetoothAdapter;
 import android.os.Build;
 
-import com.example.vasyl.prostir.R;
+import com.example.vasyl.prostir.models.Account;
 import com.example.vasyl.prostir.models.Device;
+import com.example.vasyl.prostir.models.api.AccountApi;
+import com.example.vasyl.prostir.models.repository.AccountRepository;
+import com.example.vasyl.prostir.utils.AccountCallback;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
-
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ServiceReference {
@@ -30,44 +35,59 @@ public class ServiceReference {
     private static String userPasswordForApp = PASSWORD; // Password for enter to app (CHANGE)
     private static boolean AllowMultipleDevices; // Allow mupltiple devices variablwe to server
 
-    private static ArrayList<HashMap<String, String>> arrayListOfAccounts = new ArrayList<>(); // List of Accounts
+    private static ArrayList<HashMap<String, String>> arrayListOfAccounts = new ArrayList<>(); // List of Accounts for ListView
     private static ArrayList<Device> deviceList = new ArrayList<Device>(); // List of Devices
+    private static List<Account> accounts = new ArrayList<>(); // List of accounts from DataBase
+
+    public static AccountApi getAccountApi() {
+
+        return new Retrofit.Builder()
+                .baseUrl("https://api.jsonbin.io/ ")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(AccountApi.class);
+    }
+
+    public static void connectToServer() {
+
+        new AccountRepository(getAccountApi()).getAccountsList(new AccountCallback() {
+            @Override
+            public void setAccountList(List<Account> accountList) {
+                accounts.addAll(accountList);
+                initDataBase();
+            }
+
+            @Override
+            public void setError(String errorMessage) {
+                // TODO
+            }
+        });
+    }
 
     public static void initDataBase() { // First initialization of Data
 
         // Accounts
         HashMap<String, String> map;
 
-        map = new HashMap<>();
-        map.put("Name", "Instagram");
-        map.put("Token", "495 501-3545");
-        arrayListOfAccounts.add(map);
+        for (Account item : accounts) {
+            map = new HashMap<>();
+            map.put("Name", item.getService());
+            map.put("Token", item.getTotpCode());
+            arrayListOfAccounts.add(map);
+        }
 
-        map = new HashMap<>();
-        map.put("Name", "Telegram");
-        map.put("Token", "495 241-6845");
-        arrayListOfAccounts.add(map);
+        for (Account item : accounts)
+        {
+            for (Device device : item.getDevices()) {
+                deviceList.add(new Device(device.getDeviceType(), device.getDeviceName(),  device.getLastUseDate()));
+            }
+        }
 
-        map = new HashMap<>();
-        map.put("Name", "Facebook");
-        map.put("Token", "495 431-5468");
-        arrayListOfAccounts.add(map);
-
-
-        // Devices
-        deviceList.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPad", "02.06.17", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPad X", "08.09.17", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPhone XR", "11.12.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPhone XR", "11.12.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("Galaxy s8", "29.06.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("Redmi 4x","12.01.19", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPhone 8", "01.01.18", R.mipmap.ic_launcher));
-        deviceList.add(new Device("iPad", "02.03.17", R.mipmap.ic_launcher));
     }
 
+    public static boolean isRegisteredDevice() { // This method checks whether the current device is registered.
+        // TODO
+        return true;
+    }
 
     public static void addCurrentToDeviceList() { // This method adds current Device to Device List
         BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
@@ -83,7 +103,7 @@ public class ServiceReference {
             // TODO
         }
 
-        deviceList.add(new Device(deviceName, todayDate, R.mipmap.ic_launcher));
+        deviceList.add(new Device("0", deviceName, todayDate));
     }
 
     public static void sendSMSAgain() {
@@ -154,7 +174,6 @@ public class ServiceReference {
     }
 
     public static void setAllowMultipleDevices(boolean value) {
-
 
         AllowMultipleDevices = value;
     }
