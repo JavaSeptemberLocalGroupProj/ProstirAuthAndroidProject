@@ -28,7 +28,8 @@ public class ServiceReference {
     private final static String PASSWORD = "0123"; // Password from server
     private final static String PHONENUMBER = "6505551212"; // Phone from server
     private final static String TOKEN = "25"; // Token from server
-    private final static String codeForAccount = "BLPONB - 789"; // Code for Account from Server
+    private final static String codeForAccount = "789654"; // Code for Account from Server
+    private final static String baseUrl = "https://api.jsonbin.io/";
 
     private static String userPhoneNumber; // User phone number
     private static String Description_Temp; // Temp variable for Description of Account
@@ -42,7 +43,7 @@ public class ServiceReference {
     public static AccountApi getAccountApi() {
 
         return new Retrofit.Builder()
-                .baseUrl("https://api.jsonbin.io/ ")
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(AccountApi.class);
     }
@@ -52,6 +53,10 @@ public class ServiceReference {
         new AccountRepository(getAccountApi()).getAccountsList(new AccountCallback() {
             @Override
             public void setAccountList(List<Account> accountList) {
+                accounts.clear();
+                deviceList.clear();
+                arrayListOfAccounts.clear();
+
                 accounts.addAll(accountList);
                 initDataBase();
             }
@@ -64,6 +69,7 @@ public class ServiceReference {
     }
 
     public static void initDataBase() { // First initialization of Data
+
 
         // Accounts
         HashMap<String, String> map;
@@ -87,6 +93,10 @@ public class ServiceReference {
     public static boolean isRegisteredDevice() { // This method checks whether the current device is registered.
         // TODO
         return true;
+    }
+
+    public static void someoneWantToEnter() { // Sends notification when someone want to enter
+        // TODO
     }
 
     public static void addCurrentToDeviceList() { // This method adds current Device to Device List
@@ -188,7 +198,7 @@ public class ServiceReference {
         return userPasswordForApp;
     }
 
-    public static void setUserPasswordForApp() {
+    public static void setUserPasswordForApp() { // This method sets password for
         // TODO
     }
 

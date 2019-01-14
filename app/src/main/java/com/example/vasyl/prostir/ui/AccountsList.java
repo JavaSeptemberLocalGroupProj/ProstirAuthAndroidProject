@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.vasyl.prostir.R;
 import com.example.vasyl.prostir.data.ServiceReference;
+import com.example.vasyl.prostir.launcher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public class AccountsList extends AppCompatActivity{
                 return false;
             }
             case R.id.logOutMenuItem: {
-                Intent i = new Intent(this, CountryPicker.class);
+                Intent i = new Intent(this, launcher.class);
                 startActivity(i);
                 return false;
             }
